@@ -1,6 +1,6 @@
 ### SDL2 Setup Guide for Dev-C++
 
-#### Step 0: Download SDL2
+#### Step 0: Download SDL2 or Use above files
 1. Visit [SDL2 Releases](https://github.com/libsdl-org/SDL/releases/)
 2. Download **SDL2-devel-2.x.x-mingw.zip** (not the .tar.gz version)
 
