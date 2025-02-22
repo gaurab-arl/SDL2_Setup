@@ -1,68 +1,80 @@
-🔹 Step 0: Download SDL2 for MinGW
-1️⃣ Go to: https://github.com/libsdl-org/SDL/releases/
+SDL2 Setup Guide for Dev-C++
+Step 0: Download SDL2
 
-2️⃣ Find and Download:
+Visit SDL2 Releases
 Download SDL2-devel-2.x.x-mingw.zip (not the .tar.gz version)
 
-🔹 Step 1: Extract and Organize Files
+Step 1: Extract Files
 
-1️⃣ Extract the ZIP file
-Right-click the downloaded file → Select Extract All…
-Choose Desktop as the destination (or decument for easy asscess)
-
-2️⃣ Inside x86_64-w64-mingw32, you'll see three main folders:
+Right-click downloaded file → Extract All
+Choose Desktop or Documents for easy access
+Locate x86_64-w64-mingw32 folder with these subdirectories:
 
 bin
 include
 lib
 
 
-Copy files in this order:
-🔹 Step 2: First, from the bin folder:
+
+Step 2: Copy SDL2.dll
+
+From bin folder:
 
 Copy SDL2.dll
-Create a new folder in your Documents called "MyGames" (or any name you prefer)
-Paste SDL2.dll there (this is where you'll create your game projects)
 
 
-🔹 Step 3: From the include folder:
+Create folder in Documents called "MyGames"
+Paste SDL2.dll there
 
-Go into the SDL2 folder inside it
-Copy ALL header files (.h files)
+Step 3: Copy Header Files
+
+From include/SDL2 folder:
+
+Copy ALL .h files
+
+
 Navigate to C:\Program Files (x86)\Dev-Cpp\MinGW64\include
-Create a new folder named SDL2 here
-Paste all the header files into this new SDL2 folder
+Create new folder named SDL2
+Paste all header files there
 
-🔹 Step 4: From the lib folder:
+Step 4: Copy Library Files
+
+From lib folder:
 
 Copy all .a files
+
+
 Navigate to C:\Program Files (x86)\Dev-Cpp\MinGW64\lib
-Paste all the .a files here
+Paste all .a files
 
-4️⃣ Click OK and exit.
+Step 5: Link SDL2 Library
 
-🔹 Step 7: you need to link the SDL2 library: add linker
+Go to Tools → Compiler Options
+In "Linker" box, add:
 
-Before compiling, we need to link SDL2:
+Copy-lmingw32 -lSDL2main -lSDL2
+Step 6: Create Test Program
 
-1️⃣ Go to Tools → Compiler Options
-In the "Linker" box, add: -lmingw32 -lSDL2main -lSDL2
+Create New Project:
 
-🔹 Step 6: Create and Run a Test Program
+File → Project
+Choose Console Application
+Name your project
+Save in your "MyGames" folder
 
-1️⃣ Create a New Source File
 
-Open Dev-C++
-Go to File → Project → Name it 
-Save it inside your game project folder ( i.e "MyGame" )
-
-2️⃣ We need to add the linker to project for use in project
+Add Linker to Project:
 
 Project → Project Options → Parameters
-In "Linker" add: -lmingw32 -lSDL2main -lSDL2
+In "Linker" tab, add:
 
-2️⃣ Paste this test code:
-#include <SDL2/SDL.h>
+
+
+Copy-lmingw32 -lSDL2main -lSDL2
+
+Test Code:
+
+cCopy#include <SDL2/SDL.h>
 #include <stdio.h>
 
 int main(int argc, char* argv[]) {
@@ -70,16 +82,15 @@ int main(int argc, char* argv[]) {
         printf("SDL_Init Error: %s\n", SDL_GetError());
         return 1;
     }
-
     SDL_Quit();
     return 0;
 }
 
-3️⃣ Save the file (test.c)
-4️⃣ Compile and Run! (F9 to build)
+Save as test.c and compile (F9)
 
-🔹 Troubleshooting Common Errors
-❌ "SDL2.h not found" → Check if headers are copied to the correct folder
-❌ "Undefined reference to SDL" → Ensure you added the linker flags
-❌ "Program crashes on launch" → Make sure SDL2.dll is in the project folder
-❌ "Using C++ can show error" → Use C language 
+Troubleshooting
+
+SDL2.h not found: Check header files in include folder
+Undefined reference to SDL: Verify linker flags
+Program crashes: Check SDL2.dll location
+C++ errors: Use C language instead
